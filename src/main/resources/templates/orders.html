@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <h3>Orders:</h3>
+            <div th:each="order:${ordersList}">
+                <h5 th:inline="text">Order [[${order.id}]]
+                    <a class="btn btn-link" th:href="@{/orders/{id}(id=${order.id})}" role="button">
+                        Show order info
+                    </a>
+                    <a class="btn btn-danger" th:href="@{orders/delete/{id}(id=${order.id})}" role="button">
+                        Delete order
+                    </a>
+
+                </h5>
+            </div>
+            <a href="/orders/order_form">Add new order</a>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
