@@ -13,26 +13,26 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService implements CrudRepo<Order, Long> {
+public class OrderService {
 
     private final CrudRepo<Order, Long> repo;
 
-    @Override
+
     public Order save(Order entity) {
         return repo.save(entity);
     }
 
-    @Override
+
     public Optional<Order> findById(Long id) {
         return repo.findById(id);
     }
 
-    @Override
+
     public List<Order> findAll() {
         return repo.findAll();
     }
 
-    @Override
+
     public void delete(Long id) {
         repo.delete(id);
     }

@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.temporal.ChronoField;
 import java.util.List;
 
 @Controller
@@ -28,7 +25,7 @@ public class OrderController {
     private final OrderService service;
 
     @GetMapping
-    public String getAllOrders(Model model) {
+    public String findAll(Model model) {
         List<Order> orders = service.findAll();
         model.addAttribute("ordersList", orders);
         return "orders";
@@ -41,7 +38,7 @@ public class OrderController {
     }
 
     @PostMapping("order_form")
-    public String saveOrder(Model model, @Valid Order order, Errors errors) {
+    public String save(Model model, @Valid Order order, Errors errors) {
         if (errors.hasErrors()) {
             return "order_form";
         }
@@ -60,7 +57,7 @@ public class OrderController {
     }
 
     @GetMapping("delete/{id}")
-    public String deleteById(@PathVariable Long id) {
+    public String delete(@PathVariable Long id) {
         service.delete(id);
         return "redirect:/orders";
     }

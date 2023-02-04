@@ -1,5 +1,11 @@
 package by.klubnikov.orderpage.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+
 public enum OrderStatus {
     PAID("Заказ оплачен."),
     SEND("Заказ передан в доставку."),
@@ -9,14 +15,6 @@ public enum OrderStatus {
     RECEIVED("Заказ доставлен.");
 
     private String statusDescription;
-
-    OrderStatus(String statusDescription) {
-        this.statusDescription = statusDescription;
-    }
-
-    public String getStatusDescription() {
-        return statusDescription;
-    }
 
     @Override
     public String toString() {
